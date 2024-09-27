@@ -1,0 +1,33 @@
+@mixin montserrat-classes {
+  @for $i from 1 through 9 {
+    .montserrat-#{$i * 100} {
+      font-family: "Montserrat", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: #{$i * 100};
+      font-style: normal;
+    }
+  }
+}
+
+@mixin roboto-classes {
+  $weights: (
+    thin: 100,
+    light: 300,
+    regular: 400,
+    medium: 500
+  );
+
+  @each $name, $weight in $weights {
+    .roboto-#{$name} {
+      font-family: "Roboto", sans-serif;
+      font-weight: #{$weight};
+      font-style: normal;
+    }
+
+    .roboto-#{$name}-italic {
+      font-family: "Roboto", sans-serif;
+      font-weight: #{$weight};
+      font-style: italic;
+    }
+  }
+}

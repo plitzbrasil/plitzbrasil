@@ -1,0 +1,7 @@
+@function rem($pixels, $context: 16) {
+  @if unitless($pixels) {
+    @return ($pixels / $context) * 1rem;
+  } @else {
+    @error "Don't use units when using rem() function; only numbers.";
+  }
+}

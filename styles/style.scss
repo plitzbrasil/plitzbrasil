@@ -1,0 +1,245 @@
+@import "variables.scss";
+@import "functions.scss";
+@import "mixins.scss";
+@import "fonts.scss";
+@import "dark.scss";
+
+@include roboto-classes;
+@include montserrat-classes;
+
+* {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+body {
+  line-height: 1.5;
+  color: $primary-text-color;
+  background-color: #fafafa;
+  -webkit-font-smoothing: antialiased; // Suavização de fontes no Webkit
+  -moz-osx-font-smoothing: grayscale; // Suavização de fontes no Firefox
+  scroll-behavior: smooth;
+
+  @extend .roboto-regular;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  @include drag(none);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+::selection {
+  background-color: $primary-color;
+  color: #fff;
+}
+
+h1 {
+  @extend .montserrat-700;
+  font-size: rem(36);
+
+  @media (max-width: 1920px) {
+    font-size: rem(32);
+  }
+
+  @media (max-width: 1200px) {
+    font-size: rem(24);
+  }
+
+  @media (max-width: 600px) {
+    font-size: rem(20);
+  }
+}
+
+h2 {
+  @extend .montserrat-600;
+  font-size: rem(28);
+
+  @media (max-width: 1920px) {
+    font-size: rem(24);
+  }
+
+  @media (max-width: 1200px) {
+    font-size: rem(18);
+  }
+
+  @media (max-width: 600px) {
+    font-size: rem(16);
+  }
+}
+
+p {
+  @extend .roboto-regular;
+  font-size: rem(18);
+
+  @media (max-width: 1920px) {
+    font-size: rem(16);
+  }
+
+  @media (max-width: 1200px) {
+    font-size: rem(14);
+  }
+
+  @media (max-width: 600px) {
+    font-size: rem(12);
+  }
+}
+
+.primary-button {
+  @extend .montserrat-700;
+  padding: 1em 1.75em;
+  background-color: $primary-color;
+  color: #fff;
+  border: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: darken($color: $primary-color, $amount: 10);
+  }
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  //background-color: #f0f0f0;
+  background-color: #fff;
+  //border-bottom: 1px solid #e5e5e5;
+
+  @include lateral-padding;
+
+  .logo {
+    flex-basis: rem(122);
+    height: rem(42);
+  }
+
+  nav {
+    ul {
+      display: flex;
+      flex-direction: row;
+      gap: 2.5em;
+      list-style: none;
+
+      li {
+        @extend .montserrat-700;
+
+        a {
+          position: relative;
+          display: inline-block;
+          text-decoration: none;
+          color: $primary-color;
+        }
+
+        a::after {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 2px;
+          bottom: -5px; /* Espaçamento da underline */
+          left: 50%;
+          background-color: $primary-color;
+          transition:
+            width 0.2s ease,
+            left 0.2s ease;
+        }
+
+        a:hover::after {
+          width: 100%;
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
+#inicio {
+  @include lateral-padding;
+
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-image: radial-gradient(circle, lighten($primary-color, 40%), lighten($primary-color, 10%));
+
+  .text {
+    flex-basis: 35%;
+    color: #fff;
+
+    h1 {
+      @extend .montserrat-800;
+      margin-bottom: 1em;
+    }
+
+    p {
+      margin-bottom: 3em;
+    }
+  }
+
+  .ilustration {
+    flex-basis: 45%;
+  }
+}
+
+#whats-app-button {
+  position: fixed;
+  right: 5em;
+  bottom: 4em;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5em;
+  height: 3.5em;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}

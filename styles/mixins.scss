@@ -1,0 +1,21 @@
+@mixin drag($value) {
+  -webkit-user-drag: $value;
+  -khtml-user-drag: $value;
+  -moz-user-drag: $value;
+  -o-user-drag: $value;
+  user-drag: $value;
+}
+
+@mixin responsive-font-size($min-size, $preferred-size, $max-size) {
+  font-size: clamp(rem($min-size), $preferred-size, rem($max-size));
+}
+
+@mixin lateral-padding($left: true, $right: true) {
+  @if $left {
+    padding-left: $lateral-padding;
+  }
+
+  @if $right {
+    padding-right: $lateral-padding;
+  }
+}
